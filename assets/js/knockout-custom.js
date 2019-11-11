@@ -1,18 +1,26 @@
+// var initialData = [
+//     { firstName: "Danny", lastName: "LaRusso", phones: [
+//         { type: "Mobile", number: "(555) 121-2121" },
+//         { type: "Home", number: "(555) 123-4567"}]
+//     },
+//     { firstName: "Sensei", lastName: "Miyagi", phones: [
+//         { type: "Mobile", number: "(555) 444-2222" },
+//         { type: "Home", number: "(555) 999-1212"}]
+//     }
+// ];
 var initialData = [
     { firstName: "Danny", lastName: "LaRusso", phones: [
         { type: "Mobile", number: "(555) 121-2121" },
-        { type: "Home", number: "(555) 123-4567"}]
-    },
-    { firstName: "Sensei", lastName: "Miyagi", phones: [
-        { type: "Mobile", number: "(555) 444-2222" },
-        { type: "Home", number: "(555) 999-1212"}]
+        { type: "Home", number: "(555) 123-4567"}], emails: [
+        { type: "Personal", email: "one@email.com" },
+        { type: "Work", email: "two@email.com"}]
     }
 ];
- 
+
 var ContactsModel = function(contacts) {
     var self = this;
     self.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function(contact) {
-        return { firstName: contact.firstName, lastName: contact.lastName, phones: ko.observableArray(contact.phones) };
+        return { firstName: contact.firstName, lastName: contact.lastName, phones: ko.observableArray(contact.phones), emails: ko.observableArray(contact.emails)};
     }));
  
     self.addContact = function() {
@@ -36,6 +44,17 @@ var ContactsModel = function(contacts) {
  
     self.removePhone = function(phone) {
         $.each(self.contacts(), function() { this.phones.remove(phone) })
+    };
+
+    self.addEmail = function(contact) {
+        contact.emails.push({
+            type: "",
+            email: ""
+        });
+    };
+ 
+    self.removeEmail = function(email) {
+        $.each(self.contacts(), function() { this.emails.remove(email) })
     };
  
     self.save = function() {
