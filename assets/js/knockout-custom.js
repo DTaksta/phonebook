@@ -66,6 +66,10 @@ var ContactsModel = function(contacts) {
         self.lastSavedJson(JSON.stringify(ko.toJS(self.contacts), null, 2));
     };
 
+    self.submitWithKnockoutJS = function() {
+        
+    }
+
     self.lastSavedJson = ko.observable("")
 };
  

@@ -27,7 +27,8 @@
                 </div>
                 <?php endif; ?>
 
-                <form action="" method="post">
+                <!-- <form action="" method="post"> -->
+				<form data-bind = "submit: submitWithKnockoutJS">
 					<h2>Contacts</h2>
 					<div id='contactsList'>
 						<table class='contactsEditor'>
