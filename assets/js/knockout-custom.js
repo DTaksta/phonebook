@@ -22,6 +22,11 @@ var ContactsModel = function(contacts) {
     self.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function(contact) {
         return { firstName: contact.firstName, lastName: contact.lastName, phones: ko.observableArray(contact.phones), emails: ko.observableArray(contact.emails)};
     }));
+
+    
+    this.submitKO = function() {
+        // ... now do something
+    }
  
     self.addContact = function() {
         self.contacts.push({
@@ -60,7 +65,7 @@ var ContactsModel = function(contacts) {
     self.save = function() {
         self.lastSavedJson(JSON.stringify(ko.toJS(self.contacts), null, 2));
     };
- 
+
     self.lastSavedJson = ko.observable("")
 };
  

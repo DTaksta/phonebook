@@ -47,8 +47,8 @@
 										<table>
 											<tbody data-bind="foreach: phones">
 												<tr>
-													<td><input name="phoneType[]" data-bind='value: type' /></td>
-													<td><input name="phoneNumber[]" data-bind='value: number' /></td>
+													<td><input name="phoneType[]" data-bind="value: type"/></td>
+													<td><input name="phoneNumber[]" data-bind="value: number" /></td>
 													<td><a href='#' data-bind='click: $root.removePhone'>Delete</a></td>
 												</tr>
 											</tbody>
@@ -63,8 +63,8 @@
 											<th>Emails</th>
 											<tbody data-bind="foreach: emails">
 												<tr>
-													<td><input name="emailType[]" data-bind='value: type' /></td>
-													<td><input name="emailAddress[]" data-bind='value: email' /></td>
+													<td><input name="emailType[]" data-bind="value: type" /></td>
+													<td><input name="emailAddress[]" data-bind="value: email" /></td>
 													<!-- Impliment remove email. -->
 													<td><a href='#' data-bind='click: $root.removeEmail'>Delete</a></td>
 												</tr>
