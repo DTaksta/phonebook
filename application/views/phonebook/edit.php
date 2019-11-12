@@ -88,16 +88,6 @@
 					</p>
 					
 					<textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'> </textarea>
-
-
-                	<!-- <div class="form-group">
-                		<label for="email">Email</label>
-                		<input type="email" name="email" id="email" class="form-control" value="<?= $record->email ?>">
-                	</div>
-                	<div class="form-group">
-                		<label for="phone">Phone</label>
-                		<input type="text" name="phone" id="phone" class="form-control" value="<?= $record->phone ?>">
-                	</div> -->
                 	<button type="submit" class="btn btn-default">Submit</button>
 					<a href="<?= site_url('phonebook/index') ?>" class="btn btn-danger">Cancel</a>
 				</form>

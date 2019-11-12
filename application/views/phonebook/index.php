@@ -32,7 +32,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Action</th>
@@ -43,7 +44,8 @@
                         <?php foreach ($records as $record) : ?>
                         <tr>
                             <td><?= $no ?></td>
-                            <td><?= $record->name ?></td>
+                            <td><?= $record->first_name ?></td>
+                            <td><?= $record->last_name ?></td>
                             <td><?= $record->email ?></td>
                             <td><?= $record->phone ?></td>
                             <td>

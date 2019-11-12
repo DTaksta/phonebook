@@ -31,9 +31,9 @@ var ContactsModel = function(contacts) {
         });
     };
  
-    self.removeContact = function(contact) {
-        self.contacts.remove(contact);
-    };
+    // self.removeContact = function(contact) {
+    //     self.contacts.remove(contact);
+    // };
  
     self.addPhone = function(contact) {
         contact.phones.push({

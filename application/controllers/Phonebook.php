@@ -60,11 +60,11 @@ class Phonebook extends CI_Controller {
 		$data['error_message'] = $this->session->flashdata('error_message') ?: '';
 
 		if ($this->input->method() === 'post') {
-
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-			$this->form_validation->set_rules('phone', 'Phone', 'required');
-
+            $this->form_validation->set_rules('phone', 'Phone', 'required');
+            $json = $this->input->post(NULL, TRUE);
+            var_dump($json);
 			if ($this->form_validation->run() == FALSE) {
 				$data['error_message'] = validation_errors();
 				// $this->session->set_flashdata('error_message', $errors);
