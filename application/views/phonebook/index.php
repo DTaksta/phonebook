@@ -47,10 +47,11 @@
                             <td><?= $record->first_name ?></td>
                             <td><?= $record->last_name ?></td>
                             <td><?= $record->email ?></td>
-                            <td><?= $record->phone ?></td>
+                            <td><?= $record->phone_number ?></td>
                             <td>
-                                <a href="<?= site_url('phonebook/edit/' . $record->id) ?>" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="<?= site_url('phonebook/delete/' . $record->id) ?>" class="btn btn-danger btn-xs confirm">Delete</a>
+                                <!-- Record Edit IDs. -->
+                                <a href="<?= site_url('phonebook/edit/' . $record->contact_id) ?>" class="btn btn-warning btn-xs">Edit</a>
+                                <a href="<?= site_url('phonebook/delete/' . $record->contact_id) ?>" class="btn btn-danger btn-xs confirm">Delete</a>
                             </td>
                         <?php $no++; endforeach; ?>
                     </tbody>
@@ -68,8 +69,9 @@
 
     <script src="<?= base_url('assets/js/jquery-2.1.4.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/knockout-custom.js') ?>"></script>
+
     <script src="<?= base_url('assets/js/knockout-3.2.0.js') ?>"></script>
+    <script src="<?= base_url('assets/js/knockout-custom.js') ?>"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.confirm').click(function() {

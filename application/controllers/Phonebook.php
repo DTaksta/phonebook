@@ -60,20 +60,25 @@ class Phonebook extends CI_Controller {
 		$data['error_message'] = $this->session->flashdata('error_message') ?: '';
 
 		if ($this->input->method() === 'post') {
-			$this->form_validation->set_rules('name', 'Name', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_rules('phone', 'Phone', 'required');
-            $json = $this->input->post(NULL, TRUE);
-            var_dump($json);
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+			// $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            // $this->form_validation->set_rules('phone', 'Phone', 'required');
 			if ($this->form_validation->run() == FALSE) {
 				$data['error_message'] = validation_errors();
 				// $this->session->set_flashdata('error_message', $errors);
 			} else {
-				$data = [
-					'name' => $this->input->post('name'),
-					'email' => $this->input->post('email'),
-					'phone' => $this->input->post('phone'),
-				];
+                
+                // $data = $this->input->post(NULL, TRUE);
+                foreach($_POST as $key => $value){
+                    $data[$key] = $this->input->post($key);
+                }
+                var_dump($data);
+				// $data = [
+				// 	'name' => $this->input->post('name'),
+				// 	'email' => $this->input->post('email'),
+				// 	'phone' => $this->input->post('phone'),
+				// ];
 
 				$this->phonebook_model->create($data);
 				$this->session->set_flashdata('success_message', 'Data created!');
@@ -84,35 +89,34 @@ class Phonebook extends CI_Controller {
 		$this->load->view('phonebook/add', $data);
 	}
 
-    public function edit($id)
+    public function edit($contact_id)
     {
         $data['success_message'] = $this->session->flashdata('success_message') ?: '';
         $data['error_message'] = $this->session->flashdata('error_message') ?: '';
 
         if ($this->input->method() === 'post') {
 
-            $this->form_validation->set_rules('name', 'Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_rules('phone', 'Phone', 'required');
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
 
             if ($this->form_validation->run() == FALSE) {
                 $data['error_message'] = validation_errors();
                 // $this->session->set_flashdata('error_message', $errors);
             } else {
-                $data = [
-                    'name' => $this->input->post('name'),
-                    'email' => $this->input->post('email'),
-                    'phone' => $this->input->post('phone'),
-                ];
+                foreach($_POST as $key => $value){
+                    $data[$key] = $this->input->post($key);
+                }
 
-                $this->phonebook_model->update($id, $data);
+                $this->phonebook_model->update($contact_id, $data);
                 $this->session->set_flashdata('success_message', 'Data updated!');
                 redirect(site_url('phonebook/index'));
             }
         }
 
-        if ($query = $this->phonebook_model->get($id)) {
-            $data['record'] = $query->row();
+        if ($record = $this->phonebook_model->get($contact_id)) {
+            // var_dump($record);
+            $data['record'] = $record;
+            // $data['record'] = $query->row();
         } else {
             $this->session->set_flashdata('error_message', 'Data not found!');
             redirect(site_url('phonebook/index'));
