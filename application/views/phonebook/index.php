@@ -27,7 +27,10 @@
                   <strong>Error!</strong> <?= $error_message ?>
                 </div>
                 <?php endif; ?>
-
+                <form action="" method="post">
+                    <input type="text" id="search_term" name="search_term" placeholder="What are you looking for?">
+                    <button type="submit" value="submit" class="btn">add</button>
+                </form>
                 <table class="table">
                     <thead>
                         <tr>

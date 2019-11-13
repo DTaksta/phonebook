@@ -76,13 +76,6 @@
                             </tbody>
                         </table>
                     </div>
-    
-                    <p>
-                        <button data-bind='click: addContact'>Add a contact</button>
-                        <button data-bind='click: save, enable: contacts().length > 0'>Save to JSON</button>
-                    </p>
-                    
-                    <textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'> </textarea>
                     <button type="submit" class="btn btn-default">Submit</button>
                     <a href="<?= site_url('phonebook/index') ?>" class="btn btn-danger">Cancel</a>
                 </form>
@@ -91,15 +84,9 @@
         	</div>
         </div>
     </div>
-
     <script src="<?= base_url('assets/js/jquery-2.1.4.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
     <!--dynamic form fields-->
-    <script src="<?= base_url('assets/js/jquery-2.1.4.min.js') ?>"></script>
-    <script src="https://knockoutjs.com/downloads/knockout-3.2.0.js"></script>
-	<script src="<?= base_url('assets/js/custom-edit-form.js') ?>"></scrip
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="<?= base_url('assets/js/custom-edit-form.js') ?>"></script>
 </body>
 </html>

@@ -47,7 +47,8 @@ class Phonebook extends CI_Controller {
 
         //call the model function to get the department data
         $data['no'] = $page + 1;
-        $data['records'] = $this->phonebook_model->getPhonebooks($config['per_page'], $page)->result();
+        if ($this->input->method() === 'post') $data['records'] = $this->phonebook_model->getPhonebooks($config['per_page'], $page, $this->input->post('search_term'))->result();
+        else $data['records'] = $this->phonebook_model->getPhonebooks($config['per_page'], $page)->result();
 
         $data['pagination'] = $this->pagination->create_links();
 
@@ -62,23 +63,12 @@ class Phonebook extends CI_Controller {
 		if ($this->input->method() === 'post') {
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-			// $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            // $this->form_validation->set_rules('phone', 'Phone', 'required');
 			if ($this->form_validation->run() == FALSE) {
 				$data['error_message'] = validation_errors();
-				// $this->session->set_flashdata('error_message', $errors);
 			} else {
-                
-                // $data = $this->input->post(NULL, TRUE);
                 foreach($_POST as $key => $value){
                     $data[$key] = $this->input->post($key);
                 }
-                var_dump($data);
-				// $data = [
-				// 	'name' => $this->input->post('name'),
-				// 	'email' => $this->input->post('email'),
-				// 	'phone' => $this->input->post('phone'),
-				// ];
 
 				$this->phonebook_model->create($data);
 				$this->session->set_flashdata('success_message', 'Data created!');
@@ -101,7 +91,6 @@ class Phonebook extends CI_Controller {
 
             if ($this->form_validation->run() == FALSE) {
                 $data['error_message'] = validation_errors();
-                // $this->session->set_flashdata('error_message', $errors);
             } else {
                 foreach($_POST as $key => $value){
                     $data[$key] = $this->input->post($key);
@@ -114,9 +103,7 @@ class Phonebook extends CI_Controller {
         }
 
         if ($record = $this->phonebook_model->get($contact_id)) {
-            // var_dump($record);
             $data['record'] = $record;
-            // $data['record'] = $query->row();
         } else {
             $this->session->set_flashdata('error_message', 'Data not found!');
             redirect(site_url('phonebook/index'));

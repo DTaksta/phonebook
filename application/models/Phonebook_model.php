@@ -30,7 +30,7 @@ class Phonebook_model extends CI_Model
         }
 		return  $contactID;
     }
-    
+
     public function update($contact_id, $data)
     {
         //DELETE THEN ADD:-)
@@ -117,19 +117,20 @@ class Phonebook_model extends CI_Model
         return false;
     }
 
-    //Get all contact books pagingated for index page
-    public function getPhonebooks($limit, $start)
+    //Get contact books pagingated for index page either as is or filtered by a search term.
+    public function getPhonebooks($limit, $start, $search_term = null)
 	{
         $this->db->select('contact.contact_id, contact.first_name, contact.last_name, GROUP_CONCAT(DISTINCT phone_number.phone_number SEPARATOR ",") as phone_number, GROUP_CONCAT(DISTINCT email.email SEPARATOR ",") as email');
 		$this->db->from('contact');
         $this->db->join('phone_number', 'phone_number.contact_id = contact.contact_id', 'left');
         $this->db->join('email', 'email.contact_id = contact.contact_id', 'left');
         $this->db->group_by('contact.contact_id');
-        // $this->db->where('contact.contact_id = 4');
-        // $query = $this->db->query("
-        //     SELECT t1.*, t2.id
-        //     FROM `database1`.`table1` AS t1, `database2`.`table2` AS t2
-        // ");
+        if (isset($search_term)) {
+            $this->db->like('contact.first_name', $search_term);
+            $this->db->or_like('contact.last_name', $search_term);
+            $this->db->or_like('email.email', $search_term);
+            $this->db->or_like('phone_number.phone_number', $search_term);
+        }
         $this->db->limit($limit, $start);
         $query = $this->db->get();
 		return $query;
