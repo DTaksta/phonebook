@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Phonebook</title>
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <!--dynamic form fields.-->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
@@ -62,7 +61,7 @@
                                                     <tr class="tr_clone">
                                                         <td><input name="emailTypes[]" value="<?= $email['email_type'] ?>" /></td>
                                                         <td><input name="emails[]" value="<?= $email['email'] ?>"/></td>
-														<td><a href='#' class="tr_remove" >Delete</a></td>
+														<td><a href='#' class="tr_remove" >Delete&nbsp;</a></td>
 														<td><a href="#" class="tr_clone_add">Add</a></td>
                                                     </tr>
                                                 <?php endforeach; ?>

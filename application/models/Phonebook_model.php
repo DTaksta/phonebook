@@ -2,6 +2,7 @@
 
 class Phonebook_model extends CI_Model
 {
+    //create a new contact
     public function create($data)
 	{
         $this->first_name = $data['first_name']; // please read the below note
@@ -30,10 +31,9 @@ class Phonebook_model extends CI_Model
         }
 		return  $contactID;
     }
-
+    //update contact and corresponding phone numbers and emails where applicable
     public function update($contact_id, $data)
     {
-        //DELETE THEN ADD:-)
         $this->first_name = $data['first_name']; // please read the below note
         $this->last_name = $data['last_name'];
         $this->db->where('contact_id', $contact_id);
@@ -65,7 +65,7 @@ class Phonebook_model extends CI_Model
 		return  $contactID;
     }
 
-
+    //delete contact
     public function delete($contact_id)
     {
         $this->db->where('contact_id', $contact_id);
@@ -73,7 +73,7 @@ class Phonebook_model extends CI_Model
 
         return (bool) $this->db->affected_rows();
     }
-
+    //get single contact
     public function get($contact_id)
     {
         $this->db->select('contact.contact_id, contact.first_name, contact.last_name, 

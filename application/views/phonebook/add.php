@@ -4,13 +4,7 @@
     <meta charset="UTF-8">
     <title>Phonebook</title>
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <!--dynamic form fields.-->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- KO Styles -->
-    <link href="<?= base_url('assets/css/knockout-custom.css') ?>" rel="stylesheet">
-    <!-- <link href="https://knockoutjs.com/css/tripoli.simple.css" rel="stylesheet">
-    <link href="https://knockoutjs.com/css/styles.css" rel="stylesheet">
-    <link href="https://knockoutjs.com/css/smallScreen.css" rel="stylesheet"> -->
 </head>
 <body>
     <div class="wrapper">
@@ -28,7 +22,6 @@
                 <?php endif; ?>
 
                 <form action="" method="post">
-                <!-- <form data-bind = "submit: submitWithKnockoutJS"> -->
                     <h2>Contacts</h2>
                     <div id='contactsList'>
                         <table class='contactsEditor'>
@@ -41,7 +34,6 @@
                                 <tr>
                                     <td>
                                         <input name="first_name" value=""  />
-                                        <!-- <div><a href='#' data-bind='click: $root.removeContact'>Delete</a></div> -->
                                     </td>
                                     <td><input name="last_name" value=""  /></td>
                                     <td>
@@ -66,7 +58,7 @@
 												<tr class="tr_clone">
 													<td><input name="emailTypes[]" value="" /></td>
 													<td><input name="emails[]" value=""/></td>
-													<td><a href='#' class="tr_remove" >Delete</a></td>
+													<td><a href='#' class="tr_remove" >Delete&nbsp;</a></td>
 													<td><a href="#" class="tr_clone_add">Add</a></td>
 												</tr>
                                             </tbody>
@@ -79,8 +71,6 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                     <a href="<?= site_url('phonebook/index') ?>" class="btn btn-danger">Cancel</a>
                 </form>
-                
-
         	</div>
         </div>
     </div>

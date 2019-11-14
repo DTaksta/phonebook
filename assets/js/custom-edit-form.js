@@ -1,4 +1,3 @@
-// $("input.tr_clone_add").live('click', function() {
 $('.phone-table').on('click', '.tr_clone_add', function() {
         var $tr    = $(this).closest('.tr_clone');
         var $clone = $tr.clone();

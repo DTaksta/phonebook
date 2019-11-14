@@ -8,7 +8,7 @@ class Phonebook extends CI_Controller {
 		parent::__construct();
 		$this->load->model('phonebook_model');
 	}
-
+    //landing page and also same page used to display search results
 	public function index()
 	{
 		$data['success_message'] = $this->session->flashdata('success_message') ?: '';
@@ -54,7 +54,7 @@ class Phonebook extends CI_Controller {
 
 		$this->load->view('phonebook/index', $data);
 	}
-
+    //opens contact create form and also creates cpmtact
 	public function add()
 	{
 		$data['success_message'] = $this->session->flashdata('success_message') ?: '';
@@ -79,6 +79,7 @@ class Phonebook extends CI_Controller {
 		$this->load->view('phonebook/add', $data);
 	}
 
+    //opens contact update form and also updates the contact
     public function edit($contact_id)
     {
         $data['success_message'] = $this->session->flashdata('success_message') ?: '';
@@ -112,6 +113,7 @@ class Phonebook extends CI_Controller {
         $this->load->view('phonebook/edit', $data);
     }
     
+    //delete contact operation
     public function delete($id)
     {
         if ($this->phonebook_model->delete($id)) {
